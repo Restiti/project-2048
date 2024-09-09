@@ -5,6 +5,8 @@ import 'package:lalalala/widget/GameOverDialog.dart';
 import 'package:lalalala/widget/Settings.dart';
 import 'package:provider/provider.dart';
 
+import '../provider/ScoreProvider.dart';
+
 class GameHomePage extends StatelessWidget {
   const GameHomePage({Key? key}) : super(key: key);
 
@@ -32,6 +34,9 @@ class GameHomePage extends StatelessWidget {
               showDialog(
                 context: context,
                 builder: (BuildContext context) {
+                  final scoreProvider = Provider.of<ScoreProvider>(context);
+                  final gameProvider = Provider.of<GameProvider>(context);
+                  scoreProvider.updateBestScore(gameProvider.score);
                   return GameOverDialog();
                 },
               );

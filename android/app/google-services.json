@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "837036266089",
+    "project_id": "project-2048-94448",
+    "storage_bucket": "project-2048-94448.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:837036266089:android:6ef228bdc1d89e345d08f8",
+        "android_client_info": {
+          "package_name": "com.fisa.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "837036266089-b33bchan6ak6ctaerbtp1lprjauar89j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAu33WuLT-NGV5CMtiGhFM97TOxC_gmPUU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "837036266089-b33bchan6ak6ctaerbtp1lprjauar89j.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "837036266089-u23rghice4nagtet6mpjuul7ham5n098.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.fisa.2024"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

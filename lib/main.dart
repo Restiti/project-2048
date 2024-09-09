@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lalalala/provider/AuthProvider.dart';
+import 'package:lalalala/provider/ScoreProvider.dart';
 import 'package:lalalala/widget/GameHomePage.dart';
 import 'package:lalalala/widget/MenuHomePage.dart';
 import 'package:lalalala/provider/game_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -27,16 +35,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => GameProvider(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => GameProvider()),
+        ChangeNotifierProvider(create: (_) => AuthProvider()),
+        ChangeNotifierProvider(create: (_) => ScoreProvider()),
+      ],
       child: MaterialApp.router(
         title: '2048 Game',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        debugShowCheckedModeBanner: false, // Enlève le bandeau "Debug"
-        routerConfig:
-        _router, // Utilise routerConfig au lieu de routerDelegate et routeInformationParser
+        debugShowCheckedModeBanner: false,
+        routerConfig: _router, // Utilise routerConfig
       ),
     );
   }

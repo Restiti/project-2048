@@ -65,6 +65,7 @@ class GameProvider extends ChangeNotifier {
     if (moved) {
       _lastMoveDirection = 'Left'; // Mettre à jour la direction
       addRandomTile();
+      checkGameOver();
       notifyListeners();
     }
   }
@@ -94,6 +95,7 @@ class GameProvider extends ChangeNotifier {
     if (moved) {
       _lastMoveDirection = 'Right'; // Mettre à jour la direction
       addRandomTile();
+      checkGameOver();
       notifyListeners();
     }
   }
@@ -128,6 +130,7 @@ class GameProvider extends ChangeNotifier {
     if (moved) {
       _lastMoveDirection = 'Up'; // Mettre à jour la direction
       addRandomTile();
+      checkGameOver();
       notifyListeners();
     }
   }
@@ -164,31 +167,32 @@ class GameProvider extends ChangeNotifier {
     if (moved) {
       _lastMoveDirection = 'Down'; // Mettre à jour la direction
       addRandomTile();
+      checkGameOver();
       notifyListeners();
     }
   }
 
-  // Fonction pour vérifier si le jeu est terminé
   void checkGameOver() {
-    // Vérifie s'il y a encore des cases vides
+    print("Je check");
+    print(_grid);
     for (int i = 0; i < 4; i++) {
       for (int j = 0; j < 4; j++) {
         if (_grid[i][j] == 0) {
-          return; // Il reste des cases vides, donc le jeu n'est pas fini
+          print("${"Je return en " + (i).toString() + "-" + (j).toString()}");
+          return;
         }
       }
     }
+    print("C'est full");
 
-    // Vérifie s'il est possible de fusionner des tuiles adjacentes
     for (int i = 0; i < 4; i++) {
       for (int j = 0; j < 4; j++) {
-        // Vérification des tuiles adjacentes
         if (i < 3 && _grid[i][j] == _grid[i + 1][j]) return; // En bas
         if (j < 3 && _grid[i][j] == _grid[i][j + 1]) return; // À droite
       }
     }
+    print("Il n'y a plus rien a faire");
 
-    // Si aucun mouvement possible, le jeu est terminé
     _isGameOver = true;
     notifyListeners();
   }
