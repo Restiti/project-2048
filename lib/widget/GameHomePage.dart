@@ -26,7 +26,7 @@ class GameHomePage extends StatelessWidget {
       backgroundColor: Colors.grey[900], // Couleur d'arrière-plan de la page
       body: Consumer<GameProvider>(
         builder: (context, gameProvider, child) {
-          if (!Provider.of<GameProvider>(context, listen: true).isGameOver) {
+          if (Provider.of<GameProvider>(context, listen: true).isGameOver) {
             // Afficher la boîte de dialogue Game Over si le jeu est terminé
             Future.delayed(Duration.zero, () {
               showDialog(
